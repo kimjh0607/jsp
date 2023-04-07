@@ -5,8 +5,6 @@
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.Map"%>
 <%@ page import="java.util.HashMap"%>
-<%@ page import="utils.PagingUtil"%>
-
 <%
 	BoardDAO dao = new BoardDAO(application);
 	
@@ -18,26 +16,8 @@
 		param.put("findWord",findWord);
 	}
 	
-	//페이징 처리를 위한 값
 	int totalCount = dao.getTotalCount(param);
-	int pageSize=Integer.parseInt(application.getInitParameter("PAGE_SIZE"));
-	int blockSize=Integer.parseInt(application.getInitParameter("PAGING_BLOCK"));
-	int totalPage=(int)Math.ceil((double)totalCount/pageSize);
-	
-	//페이지 초기값 및 현재 페이지 값
-	int pageNum=1;
-	String pageTemp=request.getParameter("pageNum");
-	if(pageTemp!=null && !pageTemp.equals("")){
-		pageNum=Integer.parseInt(request.getParameter("pageNum"));
-	}
-	
-	//표시할 게시물의 시작과 끝 번호 값 계산
-	int start=(pageNum-1)*pageSize+1;
-	int end=pageNum*pageSize;
-	param.put("start", start);
-	param.put("end", end);
-	
-	List<BoardDTO> boardLists = dao.getListPage(param);
+	List<BoardDTO> boardLists = dao.getList(param);
 	dao.close();
 %>
 <!DOCTYPE html>
@@ -98,19 +78,9 @@
 				}
 			}
 	%>
-	</table>
-	<table border="1" width="90%">
-		<tr align="center">
-			<td>
-				<%=PagingUtil.pagingCenter(totalCount, pageSize, blockSize, 
-					pageNum, request.getRequestURI()) %>
-			</td>
-		</tr>
-	</table>
-	<br>
+	</table><br>
 	<div align="center">
 		<button type="button" onclick="location.href='Write.jsp';">글쓰기</button>
 	</div>
-	<!--  -->
 </body>
 </html>

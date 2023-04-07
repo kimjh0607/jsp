@@ -5,7 +5,6 @@
 <%@ include file="./LoginCheck.jsp" %>
 <%
 	String num=request.getParameter("num");
-
 	
 	BoardDAO dao = new BoardDAO(application);
 	dao.updateVisitCount(num);
