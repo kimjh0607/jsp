@@ -9,7 +9,7 @@
 <body>
 	<form name="frm" method="post" action="FormResult.jsp">
 		<label>이름</label>
-		<label type="text" name="name"/><br>
+		<input type="text" name="name"/><br>
 		<label>성별</label>
 		<input type="radio" name="gender" value="man" />남자
 		<input type="radio" name="gender" value="woman" />여자

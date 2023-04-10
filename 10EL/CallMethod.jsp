@@ -20,5 +20,11 @@
 	
 	<h3>클래스명을 통한 정적 메서드 호출</h3>
 	${ELUtils.showGugudan(7)}
+	
+	<ul>
+		<li>mytag:isNumber("100") => ${ mytag:isNumber("100") }</li>
+		<li>mytag:isNumber("이백") => ${ mytag:isNumber("이백") }</li>
+		
+	</ul>
 </body>
 </html>

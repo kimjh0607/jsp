@@ -53,7 +53,7 @@
 				<td colspan="3"><%=dto.getTitle() %></td>
 			</tr>
 			<tr>
-				<td>내용</td>
+				<td>내용<%=request.getParameter("pageNum")%></td>
 				<td colspan="3"><%=dto.getContent() %></td>
 			</tr>
 			<tr>
@@ -67,7 +67,8 @@
 				<% 		
 					}
 				%>
-					<button type="button" onclick="location.href='List.jsp';">
+				
+					<button type="button" onclick="location.href='List.jsp?pageNum=<%=request.getParameter("pageNum")%>';">
 						목록보기
 					</button>
 				</td>

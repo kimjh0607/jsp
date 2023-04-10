@@ -88,7 +88,7 @@
 		<tr align="center">
 			<td align="center"><%=dto.getNum() %></td>
 			<td align="left">
-				<a href="View.jsp?num=<%=dto.getNum() %>"><%=dto.getTitle() %></a>
+				<a href="View.jsp?num=<%=dto.getNum() %>&pageNum=<%=request.getParameter("pageNum")%>"><%=dto.getTitle() %></a>
 			</td>
 			<td align="center"><%=dto.getId() %></td>
 			<td align="center"><%=dto.getVisitcount() %></td>

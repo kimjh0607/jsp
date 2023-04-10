@@ -10,14 +10,20 @@
    String oracleUrl=application.getInitParameter("OracleUrl");
    String oracleId=application.getInitParameter("OracleId");
    String oraclePw=application.getInitParameter("OraclePw");
-   MemberDAO dao = new MemberDAO(oracleDriver,oracleUrl,oracleId,oraclePw);
+   
+   
+   MemberDAO dao = new MemberDAO(oracleDriver,oracleUrl,oracleId,oraclePw);//생성자이용 객체생성
+   
    MemberDTO memberDTO = dao.getMember(userId, userPw);
    dao.close();
+   
    
    if(memberDTO.getId()!=null){
       session.setAttribute("UserId", memberDTO.getId());
       session.setAttribute("UserName", memberDTO.getName());
       response.sendRedirect("LoginForm.jsp");
+      
+      
    }else{
       request.setAttribute("loginErrMsg","로그인 오류입니다.");
       request.getRequestDispatcher("LoginForm.jsp").forward(request,response);
