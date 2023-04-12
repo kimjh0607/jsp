@@ -1,0 +1,19 @@
+<form method="get">
+		<table border="1" width="90%">
+			<tr>
+				<td align="center">
+					<select name="searchType">
+						<option value="title" 
+							<c:if test="${map.searchType=='title'}">selected</c:if>>제목</option>
+						<option value="content">내용</option>
+						<option value="content" 
+							<c:if test="${map.searchType=='title'}">selected</c:if>>제목</option>
+						<option value="content">내용</option>
+					</select>
+					<input type="search" name="searchStr" value="${map.searchStr}"/>
+					<input type="submit" value="검색"/>
+					
+				</td>
+			</tr>
+		</table>
+	</form>
