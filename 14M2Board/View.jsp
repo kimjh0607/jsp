@@ -59,5 +59,28 @@
 			</td>
 		</tr>
 	</table>
+	
+<script src="https://code.jquery.com/jquery-3.6.4.js" integrity=""></script>
+<script>
+	$('#downbtn').on("click",(e)=>{
+		e.preventDefault();
+		console.log('btn click');
+		$.ajax({
+			type : 'post',
+			async : false,
+			url : '/jspstudy/m2board/download.do',
+			dataType : 'text',
+			data : {idx: '${dto.idx}'},
+			success : function(data,textStatus){
+				console.log(data);
+				$('#dcount').text(data);
+			},
+			error : function(data,textStatus){
+				console.log('error',data,textStatus);
+			}
+		})
+	});
+</script>   
+  
 </body>
 </html>

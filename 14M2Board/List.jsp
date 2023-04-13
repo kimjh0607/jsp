@@ -20,9 +20,9 @@
 						<option value="title" 
 							<c:if test="${map.searchType=='title'}">selected</c:if>>제목</option>
 						<option value="content">내용</option>
-						<option value="content" 
+						<!-- <option value="content" 
 							<c:if test="${map.searchType=='content'}">selected</c:if>>내용</option>
-						<option value="content">제목</option>
+						<option value="content">제목</option> -->
 					</select>
 					<input type="search" name="searchStr" value="${map.searchStr}"/>
 					<input type="submit" value="검색"/>
@@ -49,9 +49,9 @@
 		</tr>
 	</c:when>
 	<c:otherwise>
-		<c:forEach var="list" items="${boardList}" varStatus="stat">
+		<c:forEach items="${boardList}" var="list" varStatus="stat">
 			<tr align="center">
-				<td>${stat.count}</td>
+				<td>${map.totalCount-((map.pageNum-1)*map.pageSize)-stat.index}</td>
 				<td align="center">
 					<a href="../m2board/view.do?idx=${list.idx}">${list.title}</a>
 				</td>
@@ -68,15 +68,18 @@
 	</c:otherwise>
 	
 </c:choose>
-	</table>
-	<!-- 하단 메뉴(페이징 글쓰기) -->
-	<table border="1" width="90%;">
-		<tr align="center">
-			<td>
-			</td>
-			<td width="100">
-				<button type="button" onclick="location.href='../m2board/write.do';">글쓰기</button>
-			</td>
-	</table>
+	<table border="1" width="90%">
+      <tr align="center">
+         <td>
+         ${map.pagingStr}
+         </td>
+         <td width="100">
+            <button type="button" onclick="location.href='../m2board/write.do';">
+               글쓰기
+            </button>
+         </td>
+      </tr>
+   </table>
+
 </body>
 </html>
