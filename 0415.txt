@@ -1,0 +1,47 @@
+ArrayList<MemberDTO> getView(){
+ArrayList<MemberDTO> list = new ArrayList<>();
+MemberDTO dto = new MboardDTO();
+String sql = "SELECT * FROM MEMBER";
+
+psmt=con.prepaerdStatement(sql);
+rs=psmt.executeQuery()
+while(rs.next()){
+
+dto.setId(rs.getString("Id"));
+dto.setPw(rs.getString("Pw"));
+dto.setName(rs.getString("Name"));
+dto.setRegdate(rs.getString("Regdate"));
+list.add(dto);
+}
+return list;
+} 
+
+해당 id를 가지고 있는 엔티티의 changecol 칼럼의 값을 content로 바꿔라
+
+
+update("관라지","name","준현이형");
+
+
+class Dao{
+.
+.
+.
+int update(String id, String changecol, String content){
+String sql="update member set ?=? 
+	where id=? ";
+
+psmt=con.preparedStatement();
+psmt.setString(1, id);
+psmt.setString(2, chagecol);
+psmt.setString(3, content);
+
+return psmt.executeUpdate();   ----------1
+
+return 0;       ------------------------------0
+}
+
+.
+.
+.
+
+}
